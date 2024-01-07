@@ -19,21 +19,21 @@
                 this.state = { isHot: true }
                 // this.testThis = this.testThis.bind(this)
             }
-            handleClick() {
+            handleClick = () => {
                 this.setState({ isHot: !this.state.isHot })
             }
-            testThis(){
+            testThis = () =>{
                 console.log(this)
             }
             render() {
                 const { isHot } = this.state
-                const push = () => this.handleClick()
+                const push = this.handleClick
                 return (
                     <div>
-                    <h1 onClick={() => this.handleClick()}>今天天气很{isHot ? '炎热' : '凉爽'}</h1>
-                    <button onClick={() => push()}>按钮</button>
+                    <h1 onClick={this.handleClick}>今天天气很{isHot ? '炎热' : '凉爽'}</h1>
+                    <button onClick={push}>按钮</button>
                     <h1 onClick={this.testThis}>test this</h1>
-                    <h1 onClick={() => this.testThis()}>test this2222</h1>
+                    <h1 onClick={this.testThis}>test this2222</h1>
                     </div>
                     )
             }
