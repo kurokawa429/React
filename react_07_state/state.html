@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>state</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="test"></div>
+    <script type="text/babel">
+
+        class Weather extends React.Component {
+            constructor(props) {
+                super(props)
+                this.state = { isHot: true }
+                // this.testThis = this.testThis.bind(this)
+            }
+            handleClick() {
+                this.setState({ isHot: !this.state.isHot })
+            }
+            testThis(){
+                console.log(this)
+            }
+            render() {
+                const { isHot } = this.state
+                const push = () => this.handleClick()
+                return (
+                    <div>
+                    <h1 onClick={() => this.handleClick()}>今天天气很{isHot ? '炎热' : '凉爽'}</h1>
+                    <button onClick={() => push()}>按钮</button>
+                    <h1 onClick={this.testThis}>test this</h1>
+                    <h1 onClick={() => this.testThis()}>test this2222</h1>
+                    </div>
+                    )
+            }
+        }
+
+
+        ReactDOM.render(<Weather />, document.getElementById('test'))
+
+
+    </script>
+
+
+</body>
+
+</html>
