@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>jsx练习</title>
+    <link rel="icon" href="file:///C:/Users/zhangjiaxin/Desktop/React/favicon.ico" />
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="test"></div>
+    <script type="text/babel">
+
+
+
+        const data = ['Angular', 'React', 'Vue']
+
+        const VDOM = (<div>
+            <h1>js框架</h1>
+            <ul>
+                {data.map((v) => (
+                    <li key={v}>{v}</li>
+                ))}
+
+            </ul>
+        </div>)
+
+        ReactDOM.render(VDOM, document.getElementById('test'))
+
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>class复习</title>
+
+</head>
+
+<body>
+    <div id="test"></div>
+    <script type="text/Javascript">
+
+       class Person{
+            constructor(name,age){
+                this.name = name
+                this.age = age
+            }
+            speak(){
+                console.log(`我叫${this.name}，年龄是${this.age }`);
+            }
+       }
+
+       class Student extends Person{
+        constructor(name,age,school){
+            super(name,age)
+            this.school = school
+        }
+
+        speak(){
+                console.log(`我叫${this.name}，年龄是${this.age},学校是${this.school}`);
+            }
+
+       }
+       const p1 = new Person('张三',18)
+       p1.speak()
+       console.log(p1);
+
+       const s1 = new Student('张三',18,'四中')
+       s1.speak()
+       console.log(s1);
+
+       
+    </script>
+
+
+</body>
+
+</html>
