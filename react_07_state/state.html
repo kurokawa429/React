@@ -14,11 +14,9 @@
     <script type="text/babel">
 
         class Weather extends React.Component {
-            constructor(props) {
-                super(props)
-                this.state = { isHot: true }
-                // this.testThis = this.testThis.bind(this)
-            }
+
+            state = { isHot: true }
+            
             handleClick = () => {
                 this.setState({ isHot: !this.state.isHot })
             }
