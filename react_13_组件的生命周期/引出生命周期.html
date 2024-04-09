@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>引出生命周期</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="test"></div>
+    <script type="text/babel">
+
+        class LifeCycle extends React.Component{
+
+            state = {opacity:1}
+
+            death = () => {
+                ReactDOM.unmountComponentAtNode(document.getElementById('test'))
+            }
+
+            componentDidMount(){
+                this.timer = setInterval(
+                    () => {
+                    let {opacity} = this.state
+                    opacity -= 0.1
+                    if(opacity <= 0) opacity = 1
+                    this.setState({opacity})
+                    }, 200)
+            }
+
+            componentWillUnmount(){
+                clearInterval(this.timer)
+            }
+            render(){
+                return (
+                    <div>
+                        <h2 style = {{opacity:this.state.opacity}}>React学不会怎么办?</h2>
+                        <button onClick = {this.death}>不活了</button>
+                        </div>
+                )
+            }
+        }
+        ReactDOM.render(<LifeCycle/>, document.getElementById('test'))
+
+    </script>
+</body>
+
+</html>

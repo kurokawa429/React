@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>受控组件</title>
+    <title>高阶函数</title>
     <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
@@ -13,33 +13,30 @@
     <div id="test"></div>
     <script type="text/babel">
         class Login extends React.Component{
-            state = {
-                username : '',
-                password : ''
+            constructor(props) {
+                super(props);
+                this.state = {
+                    username: '',
+                    password: ''
+                };
             }
 
-            saveUsername = (event) => {
-                this.setState({username:event.target.value})
-
-            }
-
-            savePassword = (event) => {
-                this.setState({password:event.target.value})
-
+            handleChange = (event) => {
+                const { name, value } = event.target;
+                this.setState({ [name]: value });
             }
 
             handleSubmit = (event) => {
                     event.preventDefault();
-
-                    alert(`你输入的用户名是：${this.state.username}，密码是：${this.state.password}`)
-
+                    const{username, password} = this.state
+                    alert(`你输入的用户名是：${username}，密码是：${password}`)
             }
 
             render() {
                 return (
                     <form onSubmit={this.handleSubmit}>
-                        用户名:<input onChange={this.saveUsername} type = "text" name = "username"/>
-                        密码:<input onChange={this.savePassword} type = "password" name = "password"/>
+                        用户名:<input onChange={this.handleChange} value={this.state.username} type = "text" name = "username"/>
+                        密码:<input onChange={this.handleChange} value={this.state.password} type = "password" name = "password"/>
                         <button>登录</button>
                         </form>
                 )
